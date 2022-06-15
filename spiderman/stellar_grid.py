@@ -24,7 +24,7 @@ def gen_grid(l1,l2,logg=4.5, response = False, stellar_model = "blackbody", verb
 
     teffs = [2500,3000,3500,4000,4500,5000,5500,6000,6500,7000]
 
-    warned = False
+    warned = True
 
     filter = response
     if response != False:
@@ -57,12 +57,12 @@ def gen_grid(l1,l2,logg=4.5, response = False, stellar_model = "blackbody", verb
         else:
             if os.path.isfile(stellar_model):
                 spectrum = np.genfromtxt(stellar_model)
-                wvl, flux = spectrum[:,0], spectrum[:,1] 
+                wvl, flux = spectrum[:,0], spectrum[:,1]
             else: print("Model stellar spectrum file", stellar_model, "not found")
 
             if ( ((l1 > np.min(wvl)) & (l1 < np.max(wvl))) & ((l2 > np.min(wvl)) & (l2 < np.max(wvl) )) ):
                 totals += [sum_flux(wvl,flux,l1,l2,filter)]
-            else:                    
+            else:
                 if warned == False:
                     print('wavelengths out of bound for stellar model, using blackbody approximation')
                 b_wvl = np.linspace(l1,l2,1000)
@@ -113,7 +113,7 @@ def get_phoenix_spectra(teff,logg,z):
         flux,h = fitsio.read(filename, ext=0, header=True)
     else:
         flux,h = fits.getdata(filename, ext=0, header=True)
-    
+
     flux = flux*1e-7*1e6/(np.pi)
 
     crval = h['CRVAL1']

@@ -3,7 +3,8 @@ import matplotlib as mpl
 import spiderman as sp
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib._png import read_png
+#from matplotlib._png import read_png
+from cv2 import imread as read_png
 from matplotlib.offsetbox import TextArea, DrawingArea, OffsetImage, \
     AnnotationBbox
 import matplotlib.patches as patches
@@ -47,7 +48,7 @@ def plot_system(spider_params,t,ax=False,min_temp=False,max_temp=False,temp_map=
 	ax = sp.plot_planet(spider_params,t,ax=ax,min_temp=min_temp,max_temp=max_temp,temp_map=temp_map,min_bright=min_bright,scale_planet=p_imrat,planet_cen=planet_pix,mycmap=mycmap,show_cax=show_cax,theme=theme,show_axes=show_axes)
 
 	if(abs(abs(spider_params.phase)-0.5) > 0.25):
-		#in front 
+		#in front
 		s_zorder = 1
 	else:
 		s_zorder = 3
@@ -777,7 +778,7 @@ def make_movie():
 
 		ax1 = plt.subplot(211, aspect='equal')
 
-		gs = gridspec.GridSpec(2, 2, width_ratios=[3, 1]) 
+		gs = gridspec.GridSpec(2, 2, width_ratios=[3, 1])
 
 #		with sb.axes_style("ticks"):
 #			ax2 = plt.subplot(gs[2])
@@ -833,7 +834,7 @@ def make_movie():
 		c = plt.get_cmap('inferno')(1.0)
 
 		if(abs(abs(phase)-0.5) > 0.25):
-			#in front 
+			#in front
 			s_zorder = 1
 		else:
 			s_zorder = 3
