@@ -22,5 +22,5 @@ from cv2 import imread as read_png
 
 
 in spiderman/stellar_grid.py, line 27
-# warned = False
+#warned = False
 warned = True
