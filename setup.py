@@ -1,6 +1,7 @@
 import setuptools
 from distutils.core import setup, Extension
 
+## https://stackoverflow.com/questions/54117786/add-numpy-get-include-argument-to-setuptools-without-preinstalled-numpy/54128391#54128391
 class get_numpy_include(object):
 
     def __str__(self):
