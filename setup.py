@@ -23,7 +23,7 @@ setup(	name='spiderman-package',
 		],
 	include_dirs = [np.get_include()],
 	install_requires = ['numpy', 'opencv-python'],
-	setup_requires=['distutils', 'setuptools', 'numpy','wheel'],
+	setup_requires=['distutils', 'setuptools', 'numpy >=1.18, <1.23','wheel'],
 	ext_modules=[_web],
 	package_data = {'spiderman': ['art/*','test_data/*']},
 )
